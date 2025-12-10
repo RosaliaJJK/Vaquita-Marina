@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
     const { usuario, contrasena } = req.body;
     if (!usuario || !contrasena) {
       req.session.error_message = 'Faltan datos';
-      return res.redirect('/auth/register');
+      return res.redirect('/auth/login');
     }
 
     const [exists] = await db.query('SELECT id FROM usuarios WHERE nombre_usuario = ?', [usuario]);
