@@ -2,6 +2,9 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 
+// 🚨 importante
+require("./config/db");
+
 const authRoutes = require('./routes/auth');
 const pagesRoutes = require('./routes/pages');
 
@@ -17,7 +20,6 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 }
 }));
 
-// 👇 ESTE sirve CSS, imágenes, JS, todo lo que esté en /public
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
